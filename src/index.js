@@ -1,26 +1,62 @@
-const mainContainer = document.getElementById("content");
+import { initialSetup } from "./initialPage";
+import { menuPage } from "./menuPage";
+import { contactUs } from "./contactUs";
+import './style.css';
 
-const mainBody = document.createElement("section");
+const mainContainer = document.getElementById('content');
 
-const mainBodyHeader = document.createElement("h1");
-const h1Content = document.createTextNode("Fancy Restaurant");
-mainBodyHeader.appendChild(h1Content);
+const mainBody = document.createElement('section');
+mainBody.setAttribute('id', 'mainBody');
 
-const mainBodyImg = document.createElement('img');
-mainBodyImg.setAttribute("src", "https://www.cornerhouserestaurants.co.uk/templates/yootheme/cache/homepage-07-b0e63288.jpeg");
+const mainHead = document.createElement('header');
+const navBar = document.createElement('ul');
+navBar.setAttribute('class', 'mainHeader');
 
-const mainBodyCopy = document.createElement('p');
-const pContent = document.createTextNode(
-    "Ikoyi builds its own spice-based cuisine around British micro-seasonality: vegetables slowly grown for flavour, sustainable line-caught fish, and aged native beef. Our kitchen serves guests an interpretation of produce in its optimal state, harnessing as much flavour as possible while respecting the true nature of the ingredient. The foundation for our menu is a vast collection of spices with a focus on sub-Saharan West Africa, which we have sourced with utmost care since opening."
-);
-mainBodyCopy.appendChild(pContent);
+const navOption1 = document.createElement("li");
+navOption1.setAttribute("class", "navOption");
+navOption1.addEventListener("click", () => {
+    mainBody.innerHTML = "";
+    initialSetup();
+});
+const navOption1Text = document.createTextNode('Home');
+navOption1.appendChild(navOption1Text);
 
-mainBody.appendChild(mainBodyHeader);
-mainBody.appendChild(mainBodyImg);
-mainBody.appendChild(mainBodyCopy);
+const navOption2 = document.createElement("li");
+navOption2.setAttribute("class", "navOption");
+navOption2.addEventListener("click", () => {
+    mainBody.innerHTML = "";
+    menuPage();
+});
+const navOption2Text = document.createTextNode('Menu');
+navOption2.appendChild(navOption2Text);
+
+const navOption3 = document.createElement("li");
+navOption3.setAttribute("class", "navOption");
+navOption3.addEventListener("click", () => {
+    mainBody.innerHTML = "";
+    contactUs();
+});
+const navOption3Text = document.createTextNode('Contact Us');
+navOption3.appendChild(navOption3Text);
+
+navBar.appendChild(navOption1);
+navBar.appendChild(navOption2);
+navBar.appendChild(navOption3);
+
+mainHead.appendChild(navBar);
+
+mainContainer.appendChild(mainHead);
 
 mainContainer.appendChild(mainBody);
 
+initialSetup();
 
+
+
+
+
+// initialSetup();
+// menuPage();
+// contactUs();
 
 console.log("This is log 2 electric boogaloo");
